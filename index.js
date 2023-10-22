@@ -2,9 +2,11 @@ const Koa = require('koa');
 const Router = require('@koa/router');
 const views = require('koa-views');
 const serve = require('koa-static');
+const dotenv = require('dotenv').config();
 const app = new Koa();
 const router = new Router();
 const port = process.env.PORT || 3000;
+const host = process.env.HOST || "localhost";
 
 // Set up views and public folder
 app.use(views(__dirname + '/views', {
@@ -31,6 +33,6 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
 });
