@@ -38,8 +38,8 @@ router.get('/dashboard/:page', requireLogin, async (ctx) => {
         });
         return;
     }
-    await renderSettings(page, guild_id, ...getApiCreds(ctx));
-    await ctx.render('dash_layout', { dash: await ctx.render('test_dashboard'), server_name: 'test_server' });
+    await renderSettings(ctx, page, guild_id, ...getApiCreds(ctx));
+    // await ctx.render('dash_layout', { dash: await ctx.render('test_dashboard'), server_name: 'test_server' });
 });
 
 // Use the router middleware
