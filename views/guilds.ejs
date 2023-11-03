@@ -1,0 +1,20 @@
+<div class="d-flex flex-wrap">
+    <div class="col mb-4">
+        <% guilds.forEach((guild) => { %>
+            <div class="card" style="background-color: #4c4c4c; width: 15rem;">
+                <img src="<%= guild.img %>" class="p-3 card-img-top rounded-circle" alt="<%= guild.name %>">
+                <div class="card-body">
+                    <h5 class="text-white card-title"><%= guild.name %></h5>
+                    <a href="#" class="btn btn-primary" onclick="setCookieAndRedirect('<%= guild.id %>');">Go to Dashboard</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<script>
+    function setCookieAndRedirect(guildId) {
+        document.cookie = `guild_id=${guildId}; path=/`;
+        window.location.href = '/dashboard/main';
+    }
+</script>

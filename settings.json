@@ -1,0 +1,82 @@
+[
+    {
+        "title": "Авто-сообщения",
+        "id": "auto_messages",
+        "categories": [
+            {
+                "title": "Приветствия",
+                "id": "greetings",
+                "options": [
+                    {
+                        "id": "enabled",
+                        "label": "Включить сообщения",
+                        "type": "checkbox"
+                    },
+                    {
+                        "id": "title",
+                        "label": "Заголовок embed",
+                        "type": "text"
+                    },
+                    {
+                        "id": "description",
+                        "label": "Описание embed",
+                        "type": "text"
+                    },
+                    {
+                        "id": "color",
+                        "label": "Цвет embed",
+                        "type": "color"
+                    },
+                    {
+                        "id": "glow_color",
+                        "label": "Цвета подсветки",
+                        "type": "multicolor",
+                        "amount": 2
+                    },
+                    {
+                        "id": "border_color",
+                        "label": "Цвета рамки",
+                        "type": "multicolor",
+                        "amount": 2
+                    },
+                    {
+                        "id": "channel",
+                        "label": "Канал для отправки",
+                        "type": "channel"
+                    }
+                ]
+            },
+            {
+                "title": "Прощания",
+                "id": "farewell",
+                "options": [
+                    {
+                        "id": "enabled",
+                        "label": "Включить сообщения",
+                        "type": "checkbox"
+                    },
+                    {
+                        "id": "title",
+                        "label": "Заголовок embed",
+                        "type": "text"
+                    },
+                    {
+                        "id": "description",
+                        "label": "Описание embed",
+                        "type": "text"
+                    },
+                    {
+                        "id": "color",
+                        "label": "Цвет embed",
+                        "type": "color"
+                    },
+                    {
+                        "id": "channel",
+                        "label": "Канал для отправки",
+                        "type": "channel"
+                    }
+                ]
+            }
+        ]
+    }
+]

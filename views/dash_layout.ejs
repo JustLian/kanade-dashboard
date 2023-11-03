@@ -1,113 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Kanade Dashboard</title>
     <style>
-        /* CSS to style the sidebar */
-        .sidebar {
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 250px;
             position: fixed;
             top: 0;
-            left: -250px; /* Hide the sidebar initially */
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            transition: left 0.3s; /* Add a transition for smooth sliding effect */
+            left: -250px;
+            background-color: #111;
+            transition: 0.3s;
+            padding-top: 60px;
             z-index: 1;
         }
 
-        /* CSS for the button to show/hide the sidebar */
-        .sidebar-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            color: #fff;
-            font-size: 24px;
+        #sidebar a {
+            padding: 15px 25px;
+            text-align: left;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.2s;
         }
 
-        /* CSS for the content area */
-        .content {
-            position: fixed;
-            top: 0;
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        #content {
+            margin-left: 0;
+            padding: 0;
+        }
+
+        #open-btn {
+            font-size: 30px;
+            position: absolute;
             left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0;
             padding: 20px;
-            background-color: #eee;
-            transition: left 0.3s;
+            cursor: pointer;
+            color: white;
         }
 
-        /* CSS for the full-width sidebar */
-        .full-width-sidebar {
-            left: 0; /* Show the sidebar, making it full-width */
+        #open-btn:hover {
+            color: #f1f1f1;
+        }
+
+        #close-btn {
+            font-size: 30px;
+            position: absolute;
+            left: 200px;
+            top: 0;
+            padding: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        #close-btn:hover {
+            color: #f1f1f1;
         }
     </style>
 </head>
-<body>
-    <div class="sidebar">
-        <!-- Sidebar Content -->
-        <!-- Sidebar Content -->
-<div class="accordion" id="sidebarAccordion">
-    <!-- Section 1 -->
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="section1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section1Content" aria-expanded="true" aria-controls="section1Content">
-                Главное
-            </button>
-        </h2>
-        <div id="section1Content" class="accordion-collapse collapse show" aria-labelledby="section1" data-bs-parent="#sidebarAccordion">
-            <div class="accordion-body">
-                <a href="/">Главная</a><br/>
-                <a href="/dashboard">Панель управления</a>
+<body style="background-color: black;">
+
+    <div id="sidebar">
+        <div id="close-btn">&#9665;</div>
+        <a href="/dashboard/guilds">Выбрать сервер</a>
+        <a href="/dashboard/auto_messages">Авто-сообщения</a>
+    </div>
+
+    <div id="content">
+        <div id="open-btn">&#9665;</div>
+        <div style="margin-top: 4.5rem; margin-left: 1rem;">
+            <div class="d-flex justify-content-center align-items-center parent">
+                <div class="d-flex align-items-center">
+                    <img src="https://i.postimg.cc/5jWFQyvd/f5467d03bfdc85770e651427805b1cd7.jpg" class="rounded-circle m-2" style="height: 2.3rem">
+                    <h2 class="m-0"><%- server_name %></h2>
+                </div>
             </div>
+            <%- dash %>
         </div>
     </div>
 
-    <!-- Section 2 -->
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="section2">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#section2Content" aria-expanded="false" aria-controls="section2Content">
-                Настройки
-            </button>
-        </h2>
-        <div id="section2Content" class="accordion-collapse collapse" aria-labelledby="section2" data-bs-parent="#sidebarAccordion">
-            <div class="accordion-body">
-                <a href="#">Сообщения при входе и выходе</a><br/>
-                <a href="#">Link 4</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    </div>
-
-    <div class="content">
-        <%- dash %>
-    </div>
-
-    <div class="sidebar-toggle" onclick="toggleSidebar()">☰</div>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
-        // JavaScript to toggle the sidebar
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const content = document.querySelector('.content');
+        document.getElementById("open-btn").addEventListener("click", function() {
+            document.getElementById("sidebar").style.left = "0";
+        });
 
-            if (sidebar.style.left === '0px') {
-                // Hide the sidebar
-                sidebar.style.left = '-250px';
-                content.style.left = '0';
-            } else {
-                // Show the sidebar, making it full-width
-                sidebar.style.left = '0';
-                content.style.left = '250px';
-            }
-        }
+        document.getElementById("close-btn").addEventListener("click", function() {
+            document.getElementById("sidebar").style.left = "-250px";
+        });
     </script>
+
 </body>
 </html>
