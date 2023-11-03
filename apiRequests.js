@@ -44,7 +44,7 @@ async function getSettings(apiKey, apiId, guildId) {
         }
     })
     .then((response) => {
-        return response.data;
+        return response.data.result;
     })
     .catch((error) => {
         console.error('Error request guilds settings', error);

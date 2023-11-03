@@ -37,6 +37,7 @@ async function renderSettings(ctx, page, guild_id, apiKey, apiId) {
                 return;
             }
             pg.categories.forEach(category => {
+                const values = guild_settings[category.id];
                 full_html += `
                 <style> .category { margin-top: 20px; } </style>
                 <div class="container" style="color: #d1e2e8;">
@@ -55,7 +56,7 @@ async function renderSettings(ctx, page, guild_id, apiKey, apiId) {
                         case 'checkbox':
                             full_html += `
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="${id}">
+                                <input class="form-check-input" type="checkbox" id="${id}" ${values[opt.id] ? 'checked' : ''}>
                                 <label class="form-check-label" for="singleCheckbox">
                                     ${opt.label}
                                 </label>
@@ -68,7 +69,7 @@ async function renderSettings(ctx, page, guild_id, apiKey, apiId) {
                             full_html += `
                             <div class="form-group">
                                 <label for="textInput">${opt.label}:</label>
-                                <input type="text" class="form-control" id="${id}" placeholder="Enter text or number">
+                                <input type="text" class="form-control" id="${id}" placeholder="Enter text or number" value="${values[opt.id]}">
                             </div>
                             `;
                             break;
@@ -78,7 +79,7 @@ async function renderSettings(ctx, page, guild_id, apiKey, apiId) {
                             full_html += `
                             <div class="form-group">
                                 <label for="colorPicker">${opt.label}:</label>
-                                <input type="color" class="form-control" id="${id}">
+                                <input type="color" class="form-control" id="${id}" value="${values[opt.id]}">
                             </div>
                             `;
                             break;
@@ -90,7 +91,7 @@ async function renderSettings(ctx, page, guild_id, apiKey, apiId) {
                             `;
                             for (let i = 1; i <= opt.amount; i++) {
                                 full_html += `
-                                    <input type="color" class="mb-1 form-control" id="${id}${i}">
+                                    <input type="color" class="mb-1 form-control" id="${id}${i}" value="${values[opt.id + i]}">
                                 `;
                             }
                             full_html += '</div>';
