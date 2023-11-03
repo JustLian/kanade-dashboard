@@ -26,6 +26,10 @@ router.get('/', async (ctx) => {
     await ctx.render('layout', { body: await ctx.render('home') }) // Renders the 'home' view
 });
 
+router.get('/dashboard', async (ctx) => {
+    ctx.redirect('/dashboard/main');
+});
+
 router.get('/dashboard/:page', requireLogin, async (ctx) => {
     const { page } = ctx.params;
     const guild_id = ctx.cookies.get('guild_id');
