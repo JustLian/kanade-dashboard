@@ -42,7 +42,8 @@ router.get('/dashboard/:page', requireLogin, async (ctx) => {
             dash: await ctx.render('guilds', { guilds: fetchedGuilds }),
             server_name: 'Выберите сервер',
             img: 'https://cdn.discordapp.com/avatars/1088315782892625920/2f351a55584675d2b5e757a6ceaf782f.webp?size=300',
-            additional: ""
+            additional: "",
+            addButton: false
         });
         return;
     }

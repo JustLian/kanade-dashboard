@@ -8,7 +8,7 @@ const router = new Router();
 // Replace these with your Discord application credentials
 const CLIENT_ID = process.env['CLIENT_ID'];
 const CLIENT_SECRET = process.env['CLIENT_SECRET'];
-const REDIRECT_URI = 'http://localhost:3000/auth/callback'; // Callback URL
+const REDIRECT_URI = `http://${process.env.REDIR_URL}/auth/callback`; // Callback URL
 const DISCORD_API = 'https://discord.com/api/v10'; // Discord API base URL
 
 // Route for initiating the Discord OAuth2 flow
