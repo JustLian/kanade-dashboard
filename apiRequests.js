@@ -49,7 +49,47 @@ async function getSettings(apiKey, apiId, guildId) {
     .catch((error) => {
         console.error('Error request guilds settings', error);
         throw error;
+    });
+}
+
+
+async function updateGuildData(apiKey, apiId, guildId, newData) {
+    return await axios.patch(process.env.API_URL + '/updateGuildData', {
+        guild_id: guildId,
+        data: newData
+    }, {
+        headers: {
+            apiId: apiId,
+            apiKey: apiKey
+        }
     })
+    .then((response) => {
+        return response.data.modified;
+    })
+    .catch((error) => {
+        console.error('Error updating guild data', error);
+        throw error;
+    });
+}
+
+
+async function getGuildChannels(apiKey, apiId, guildId, type) {
+    return await axios.post(process.env.API_URL + '/getGuildChannels', {
+        guild_id: guildId,
+        channel_type: type
+    }, {
+        headers: {
+            apiId: apiId,
+            apiKey: apiKey
+        }
+    })
+    .then((response) => {
+        return response.data;
+    })
+    .catch((error) => {
+        console.error('Error updating guild data', error);
+        throw error;
+    });
 }
 
 
@@ -68,4 +108,16 @@ async function getUserInfo(accessToken) {
         });
 }
 
-module.exports = { getUserInfo, generateUserToken, getGuilds, getSettings };
+
+async function getGuildInfo(guildId) {
+    return await axios.get(process.env.API_URL + '/getGuildData/' + guildId)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.error('Error fetching guild info:', error);
+        });
+}
+
+
+module.exports = { getUserInfo, generateUserToken, getGuilds, getSettings, getGuildInfo, updateGuildData, getGuildChannels };
