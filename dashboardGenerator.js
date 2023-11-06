@@ -49,8 +49,11 @@ async function renderSettings(ctx, page, guild_id, apiKey, apiId) {
         }
 
         .item {
-            width: 50%;
-            /* Add other styling for items */
+            width: 47.5%;
+        }
+        
+        .item:nth-child(2n) {
+            margin-left: 5%; /* Margin to every 2nd item within a category */
         }
 
         /* Media query for small screens */

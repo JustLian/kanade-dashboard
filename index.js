@@ -29,7 +29,7 @@ router.get('/', async (ctx) => {
 });
 
 router.get('/dashboard', async (ctx) => {
-    ctx.redirect('/dashboard/main');
+    ctx.redirect('dashboard/auto_messages');
 });
 
 router.get('/dashboard/:page', requireLogin, async (ctx) => {
