@@ -1,15 +1,35 @@
-<div class="d-flex flex-wrap">
-    <div class="col mb-4">
-        <% guilds.forEach((guild) => { %>
-            <div class="card" style="background-color: #4c4c4c; width: 15rem;">
+<style>
+    .square-container {
+        display: grid;
+        place-items: center; /* Horizontally and vertically centered */
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
+
+    .card {
+        flex: 0 0 calc(20% - 20px); /* Adjust this value for the desired spacing between cards */
+        margin: 10px;
+    }
+</style>
+<div class="card-container">
+    <% guilds.forEach((guild) => { %>
+        <div class="card" style="background-color: #4c4c4c; width: 15rem;">
+            <div class="square-container">
                 <img src="<%= guild.img %>" class="p-3 card-img-top rounded-circle" alt="<%= guild.name %>">
-                <div class="card-body">
-                    <h5 class="text-white card-title"><%= guild.name %></h5>
-                    <a href="#" class="btn btn-primary" onclick="setCookieAndRedirect('<%= guild.id %>');">Go to Dashboard</a>
-                </div>
             </div>
-        <% }); %>
-    </div>
+            <div class="card-body">
+                <h5 class="text-white card-title"><%= guild.name %></h5>
+                <a href="#" class="btn btn-primary" onclick="setCookieAndRedirect('<%= guild.id %>');">Go to Dashboard</a>
+            </div>
+        </div>
+    <% }); %>
 </div>
 
 <script>

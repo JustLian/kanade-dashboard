@@ -72,6 +72,13 @@
         #close-btn:hover {
             color: #f1f1f1;
         }
+
+        .square-container {
+            display: grid;
+            place-items: center; /* Horizontally and vertically centered */
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body style="background-color: black;">
@@ -88,8 +95,10 @@
         <div style="margin-top: 4.5rem; margin-left: 1rem;">
             <div class="d-flex justify-content-center align-items-center parent">
                 <div class="d-flex align-items-center">
-                    <img src="<%- img %>" class="rounded-circle m-2" style="height: 2.3rem">
-                    <h2 class="text-white m-0"><%- server_name %></h2>
+                    <div class="square-container rounded-circle m-2">
+                        <img src="<%- img %>" style="height: 2.3rem">
+                    </div>
+                    <h2 class="text-white my-0 m-2"><%- server_name %></h2>
                 </div>
             </div>
             <%- dash %>
